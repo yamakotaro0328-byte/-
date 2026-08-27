@@ -1,0 +1,23 @@
+# DiscordSRV-ButtonLink 設定ファイル
+#
+# 前提: DiscordSRVの /discord link (連携コード発行) 機能を使います。
+# このアドオンは、Discord側に「アカウント連携」ボタンを設置し、
+# ボタンを押したユーザーにコードの送信を案内し、送られてきたコードを
+# DiscordSRV本体の連携処理に渡すだけのものです。
+# DiscordSRVのDiscord Botトークン設定(config.yml)をそのまま利用するため、
+# このアドオン自体はBotトークンを持ちません。
+
+addon:
+  # ボタン付きメッセージを投稿するテキストチャンネルのID。
+  # 空、または "0" の場合は DiscordSRV の メインチャンネル(main-channel)を使用します。
+  channel-id: "0"
+
+  # ボタンを押してからコードを送るまでの制限時間(秒)
+  code-wait-seconds: 90
+
+  button-label: "アカウント連携"
+  embed-title: "Minecraftアカウント連携"
+  embed-description: |
+    下のボタンを押してください。
+    ゲーム内で `/discord link` を実行すると4桁の認証コードが発行されるので、
+    ボタンを押した後の案内に従って、そのコードをこのチャンネルに送信してください。

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yamakotaro</groupId>
+    <artifactId>discordsrv-button-link</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>DiscordSRV-ButtonLink</name>
+    <description>DiscordSRVのアカウント連携コードをDiscordのボタンから入力できるようにするアドオン</description>
+
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 最新版は https://jitpack.io/p/discordsrv/discordsrv で確認してください -->
+        <discordsrv.version>1.30.5</discordsrv.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <!-- DiscordSRV本体はJitPack経由で配布されている -->
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            DiscordSRV本体。実行時はサーバーに導入済みのDiscordSRVプラグインのクラスが
+            使われるため provided スコープにする(このjarには同梱しない)。
+            DiscordSRVはJDAを github.scarsz.discordsrv.dependencies.jda 配下に
+            リロケートして同梱しているので、このアドオンからは net.dv8tion.jda では
+            なく github.scarsz.discordsrv.dependencies.jda 配下のクラスを直接使う。
+        -->
+        <dependency>
+            <groupId>com.github.DiscordSRV</groupId>
+            <artifactId>DiscordSRV</artifactId>
+            <version>${discordsrv.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

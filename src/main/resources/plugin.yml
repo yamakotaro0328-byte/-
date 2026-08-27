@@ -1,0 +1,7 @@
+name: DiscordSRV-ButtonLink
+version: ${project.version}
+main: com.yamakotaro.discordsrvlink.ButtonLinkAddon
+api-version: '1.21'
+author: yamakotaro
+description: 'DiscordSRVのアカウント連携コードをDiscordのボタンから入力できるようにするアドオン'
+depend: [DiscordSRV]
