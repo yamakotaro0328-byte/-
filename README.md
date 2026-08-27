@@ -33,7 +33,9 @@ mvn package
 
 `target/discordsrv-button-link-1.0.0.jar` が生成されます。
 
-※ このリポジトリのビルド確認は、実行環境のネットワーク制限により PaperMC のMavenリポジトリ (`repo.papermc.io`) と DiscordSRV配布元の JitPack (`jitpack.io`) へ到達できず、この場ではフルビルドを実行できていません。通常のインターネット環境下であれば `mvn package` は問題なく動作するはずですが、初回ビルド時にコンパイルエラーが出た場合はDiscordSRVのバージョン更新でAPIが変わっている可能性があるため、`pom.xml` の `discordsrv.version` を最新版に合わせてください。
+GitHub Actions (`.github/workflows/build.yml`) がpushのたびに実際にPaperMC/JitPackへアクセスできる環境で `mvn package` を走らせ、jarをビルド成果物としてアップロードします。「Actions」タブの該当ワークフロー実行から `discordsrv-button-link` アーティファクトとしてダウンロードできます。
+
+※ 開発時のサンドボックス環境ではネットワークポリシーにより PaperMC のMavenリポジトリ (`repo.papermc.io`) と DiscordSRV配布元の JitPack (`jitpack.io`) へ到達できなかったため、その場での `mvn package` 実行はできていません。代わりに、実際のDiscordSRV/JDA v4のソースコードから使用APIのメソッドシグネチャをすべて確認したうえで、それを再現したスタブ(スタブ自体はリポジトリには含めていません)に対して `javac` で本体コードを実コンパイルし、型・シグネチャレベルでの誤りがないことを確認済みです。最終的な依存解決込みのフルビルドはGitHub Actions側で検証されます。初回ビルド時にコンパイルエラーが出た場合はDiscordSRVのバージョン更新でAPIが変わっている可能性があるため、`pom.xml` の `discordsrv.version` を最新版に合わせてください。
 
 ## 導入方法
 

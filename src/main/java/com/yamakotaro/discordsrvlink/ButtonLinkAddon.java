@@ -38,6 +38,13 @@ public class ButtonLinkAddon extends JavaPlugin {
         if (jda != null) {
             setupDiscordSide(jda);
         }
+
+        // ボタンは押したがコードを送らずに離脱した分の待受状態を1分毎に掃除する
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
+            if (linkButtonListener != null) {
+                linkButtonListener.purgeExpired();
+            }
+        }, 20L * 60, 20L * 60);
     }
 
     @Override

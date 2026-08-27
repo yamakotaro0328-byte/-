@@ -101,4 +101,13 @@ public class LinkButtonListener extends ListenerAdapter {
     private String key(String channelId, String userId) {
         return channelId + ":" + userId;
     }
+
+    /**
+     * ボタンは押されたがコードが送られないまま期限切れになった待受状態を掃除する。
+     * 呼び出さないまま放置すると、離脱者の分がメモリに残り続けてしまう。
+     */
+    public void purgeExpired() {
+        long now = System.currentTimeMillis();
+        awaitingCode.entrySet().removeIf(entry -> entry.getValue() < now);
+    }
 }
