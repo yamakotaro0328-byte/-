@@ -69,10 +69,11 @@ public class LinkButtonMessenger {
                 .setDescription(plugin.getConfig().getString("addon.embed-description", ""))
                 .setColor(new Color(88, 101, 242));
 
+        // JDA v4のMessageActionは addActionRow ではなく setActionRow(Component...) という名前
         Button button = Button.primary(BUTTON_ID, plugin.getConfig().getString("addon.button-label", "アカウント連携"));
 
         channel.sendMessage(embed.build())
-                .addActionRow(button)
+                .setActionRow(button)
                 .queue(message -> saveMessageId(stateFile, message.getId()));
     }
 
