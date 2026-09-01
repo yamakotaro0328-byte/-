@@ -15,8 +15,13 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- 最新版は https://jitpack.io/p/discordsrv/discordsrv で確認してください -->
-        <discordsrv.version>1.30.5</discordsrv.version>
+        <!--
+            JitPackはGitのタグ名をそのままバージョン文字列として使う。
+            DiscordSRVのタグは "v1.30.5" のように先頭に v が付くので、
+            ここも "1.30.5" ではなく "v1.30.5" にする必要がある。
+            最新版は https://github.com/DiscordSRV/DiscordSRV/tags で確認してください。
+        -->
+        <discordsrv.version>v1.30.5</discordsrv.version>
     </properties>
 
     <repositories>
