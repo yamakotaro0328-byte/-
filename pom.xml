@@ -16,12 +16,12 @@
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--
-            JitPackはGitのタグ名をそのままバージョン文字列として使う。
-            DiscordSRVのタグは "v1.30.5" のように先頭に v が付くので、
-            ここも "1.30.5" ではなく "v1.30.5" にする必要がある。
-            最新版は https://github.com/DiscordSRV/DiscordSRV/tags で確認してください。
+            DiscordSRV本体は同梱の公式Nexusリポジトリ(nexus.scarsz.me)で配布されている。
+            JitPackではない。groupId/artifactIdは "com.discordsrv" / "discordsrv"、
+            バージョンはリリースタグそのままの数字(先頭にvは付かない)。
+            最新版は https://github.com/DiscordSRV/DiscordSRV/releases で確認してください。
         -->
-        <discordsrv.version>v1.30.5</discordsrv.version>
+        <discordsrv.version>1.30.5</discordsrv.version>
     </properties>
 
     <repositories>
@@ -30,9 +30,9 @@
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
         <repository>
-            <!-- DiscordSRV本体はJitPack経由で配布されている -->
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
+            <!-- DiscordSRV公式のビルド成果物配布用Nexusリポジトリ -->
+            <id>scarsz-nexus</id>
+            <url>https://nexus.scarsz.me/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -52,8 +52,8 @@
             なく github.scarsz.discordsrv.dependencies.jda 配下のクラスを直接使う。
         -->
         <dependency>
-            <groupId>com.github.DiscordSRV</groupId>
-            <artifactId>DiscordSRV</artifactId>
+            <groupId>com.discordsrv</groupId>
+            <artifactId>discordsrv</artifactId>
             <version>${discordsrv.version}</version>
             <scope>provided</scope>
         </dependency>
